@@ -1,4 +1,5 @@
 import axios from "axios";
+import Head from "next/head";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import styles from "../../styles/Home.module.css";
@@ -14,7 +15,7 @@ const Forms = () => {
     <>
     <Head>
     <title>Forms</title>
-    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"></meta>
+    <meta httpEquiv="Content-Security-Policy" content="upgrade-insecure-requests"></meta>
     </Head>
     <div className={styles.container}>
       <div

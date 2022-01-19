@@ -149,7 +149,7 @@ export default function Create() {
     <>
     <Head>
     <title>Create Your Form</title>
-    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"></meta>
+    <meta httpEquiv="Content-Security-Policy" content="upgrade-insecure-requests"></meta>
     </Head>
     <div className={styles.container}>
       <div className={styles.formContainer}>
