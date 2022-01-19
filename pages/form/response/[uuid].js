@@ -51,10 +51,16 @@ export default function Response(props) {
     return <div>Loading...</div>;
   } else
     return (
+      <>
+      <Head>
+      <title>Response</title>
+      <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"></meta>
+      </Head>
       <div className={styles.container}>
         <div>Response ID: {uuid}</div>
         {/* <ResponseForm response={response} questions = {questions} /> */}
       </div>
+      </>
     );
 }
 

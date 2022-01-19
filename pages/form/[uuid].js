@@ -71,6 +71,11 @@ export default function Form(props) {
     return <div>Loading...</div>;
   } else
     return (
+      <>
+      <Head>
+      <title>Form Title: {props.form.formTitle}</title>
+      <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"></meta>
+      </Head>
       <div className={styles.container}>
         <div>Form ID: {props.form.uuid}</div>
         <div className={styles.formContainer}>
@@ -109,6 +114,7 @@ export default function Form(props) {
           </button>
         </div>
       </div>
+      </>
     );
 }
 

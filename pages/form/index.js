@@ -6,11 +6,16 @@ import styles from "../../styles/Home.module.css";
 const Forms = () => {
   const [forms, setForms] = useState([]);
   useEffect(async () => {
-    const res = await axios.get("http://54.151.56.35:8000/forms");
+    const res = await axios.get("http://ec2-54-151-56-35.us-west-1.compute.amazonaws.com/forms");
     setForms(res.data.forms);
   }, []);
 
   return (
+    <>
+    <Head>
+    <title>Forms</title>
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"></meta>
+    </Head>
     <div className={styles.container}>
       <div
         className={styles.formContainer}
@@ -31,6 +36,7 @@ const Forms = () => {
         ))}
       </div>
     </div>
+    </>
   );
 };
 

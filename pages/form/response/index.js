@@ -27,6 +27,11 @@ const Responses = () => {
   }, [])
 
   return (
+    <>
+     <Head>
+      <title>Responses</title>
+      <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"></meta>
+      </Head>
     <div className={styles.container}>
       <div
         className={styles.formContainer}
@@ -46,6 +51,7 @@ const Responses = () => {
         ))}
       </div>
     </div>
+    </>
   );
 };
 
