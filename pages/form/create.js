@@ -11,6 +11,7 @@ import { faMinus } from "@fortawesome/free-solid-svg-icons";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
+import Head from "next/head";
 
 export default function Create() {
   const uuid = uuidv4();
@@ -145,6 +146,11 @@ export default function Create() {
   useEffect(addDefaultQuestion, []);
 
   return (
+    <>
+    <Head>
+    <title>Create Your Form</title>
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"></meta>
+    </Head>
     <div className={styles.container}>
       <div className={styles.formContainer}>
         <div className={styles.box}>
@@ -239,6 +245,7 @@ export default function Create() {
         </div>
       </div>
     </div>
+    </>
   );
 }
 
