@@ -1,5 +1,6 @@
 import styles from "./../../../styles/Home.module.css"
 import axios from "axios";
+import { useRouter } from "next/router";
 
 export async function getStaticPaths() {
   const res = await axios.get("http://54.151.56.35:8000/responses");
@@ -44,6 +45,15 @@ export const getStaticProps = async (context) => {
 }
 
   export default function Response(props) {
+
+    const router = useRouter()
+
+  // If the page is not yet generated, this will be displayed
+  // initially until getStaticProps() finishes running
+  if (router.isFallback) {
+    return <div>Loading...</div>
+  }
+
     const uuid = props.response.uuid
 
   // const router = useRouter();

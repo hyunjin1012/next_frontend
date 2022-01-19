@@ -12,9 +12,10 @@ export async function getStaticPaths() {
       return;
     } else return { params: { uuid: form.uuid.toString() } };
   });
+  console.log(paths)
   return {
     paths: paths,
-    fallback: true,
+    fallback: false,
   };
 }
 
@@ -32,6 +33,14 @@ export async function getStaticProps(context) {
 }
 
 export default function Form(props) {
+
+  const router = useRouter()
+
+  // If the page is not yet generated, this will be displayed
+  // initially until getStaticProps() finishes running
+  if (router.isFallback) {
+    return <div>Loading...</div>
+  }
 
   const responseUuid = uuidv4();
   const formTitle = props.form.formTitle;
