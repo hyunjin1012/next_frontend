@@ -23,16 +23,16 @@ const Responses = () => {
 
   const [responses, setResponses] = useState([]);
   useEffect(async () => {
-    const res = await axios.get('http://54.151.56.35:8000/responses');
+    const res = await axios.get('http://nodejs.hyunjin.xyz:8000/responses');
     setResponses(res.data.responses)
   }, [])
 
   return (
     <>
-     <Head>
+     {/* <Head>
       <title>Responses</title>
       <meta httpEquiv="Content-Security-Policy" content="upgrade-insecure-requests"></meta>
-      </Head>
+      </Head> */}
     <div className={styles.container}>
       <div
         className={styles.formContainer}

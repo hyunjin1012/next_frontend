@@ -6,7 +6,7 @@ import { useRouter } from "next/router";
 import Head from "next/head";
 
 export async function getStaticPaths() {
-  const res = await axios.get("http://54.151.56.35:8000/forms");
+  const res = await axios.get("http://nodejs.hyunjin.xyz:8000/forms");
   const forms = res.data.forms;
   const paths = forms.map((form) => {
     if (form.uuid === null) {
@@ -21,10 +21,10 @@ export async function getStaticPaths() {
 
 export async function getStaticProps(context) {
   const uuid = context.params.uuid;
-  const formRes = await axios.get("http://54.151.56.35:8000/form/" + uuid);
+  const formRes = await axios.get("http://nodejs.hyunjin.xyz:8000/form/" + uuid);
   const form = formRes.data.form;
   const optionsRes = await axios.get(
-    "http://54.151.56.35:8000/form/options/" + uuid
+    "http://nodejs.hyunjin.xyz:8000/form/options/" + uuid
   );
   const options = optionsRes.data.options;
   return {
@@ -42,7 +42,7 @@ export default function Form(props) {
   const questions = props.form.Questions;
 
   const submit = async () => {
-    await axios.post("http://54.151.56.35:8000/createresponse", {
+    await axios.post("http://nodejs.hyunjin.xyz:8000/createresponse", {
       uuid: responseUuid,
       formTitle,
       formDesc,
@@ -52,7 +52,7 @@ export default function Form(props) {
       return;
     } else
       options.map(async (option, index) => {
-        await axios.post("http://54.151.56.35:8000/createanswer", {
+        await axios.post("http://nodejs.hyunjin.xyz:8000/createanswer", {
           uuid: uuidv4(),
           qUuid: option.qUuid,
           qTitle: option.qTitle,
@@ -73,10 +73,10 @@ export default function Form(props) {
   } else
     return (
       <>
-      <Head>
+      {/* <Head>
       <title>Form Title: {props.form.formTitle}</title>
       <meta httpEquiv="Content-Security-Policy" content="upgrade-insecure-requests"></meta>
-      </Head>
+      </Head> */}
       <div className={styles.container}>
         <div>Form ID: {props.form.uuid}</div>
         <div className={styles.formContainer}>

@@ -7,16 +7,16 @@ import styles from "../../styles/Home.module.css";
 const Forms = () => {
   const [forms, setForms] = useState([]);
   useEffect(async () => {
-    const res = await axios.get("http://ec2-54-151-56-35.us-west-1.compute.amazonaws.com/forms");
+    const res = await axios.get("http://nodejs.hyunjin.xyz:8000/forms");
     setForms(res.data.forms);
   }, []);
 
   return (
     <>
-    <Head>
+    {/* <Head>
     <title>Forms</title>
     <meta httpEquiv="Content-Security-Policy" content="upgrade-insecure-requests"></meta>
-    </Head>
+    </Head> */}
     <div className={styles.container}>
       <div
         className={styles.formContainer}

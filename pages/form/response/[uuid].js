@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import Head from "next/head";
 
 export async function getStaticPaths() {
-  const res = await axios.get("http://54.151.56.35:8000/responses");
+  const res = await axios.get("http://nodejs.hyunjin.xyz:8000/responses");
   const responses = res.data.responses;
   const paths = responses.map((response) => {
     if (response.uuid === null) {
@@ -28,7 +28,7 @@ export const getStaticProps = async (context) => {
   // const questions = questionsRes.data.questions;
   // console.log(questions)
 
-  const res = await axios.get("http://54.151.56.35:8000/responses");
+  const res = await axios.get("http://nodejs.hyunjin.xyz:8000/responses");
   const responses = res.data.responses;
   const response = responses.filter((response) => response.uuid === uuid)[0];
   const formUuid = response.formUuid;
@@ -53,10 +53,10 @@ export default function Response(props) {
   } else
     return (
       <>
-      <Head>
+      {/* <Head>
       <title>Response</title>
       <meta httpEquiv="Content-Security-Policy" content="upgrade-insecure-requests"></meta>
-      </Head>
+      </Head> */}
       <div className={styles.container}>
         <div>Response ID: {uuid}</div>
         {/* <ResponseForm response={response} questions = {questions} /> */}
