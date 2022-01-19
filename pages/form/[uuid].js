@@ -5,7 +5,7 @@ import { v4 as uuidv4 } from "uuid";
 import { useRouter } from "next/router";
 
 export async function getStaticPaths() {
-  const res = await fetch("http://54.151.56.35:8000/forms");
+  const res = await axios.get("http://54.151.56.35:8000/forms");
   const forms = res.data.forms;
   const paths = forms.map((form) => {
     if (form.uuid === null) {
@@ -20,9 +20,9 @@ export async function getStaticPaths() {
 
 export async function getStaticProps(context) {
   const uuid = context.params.uuid;
-  const formRes = await fetch ("http://54.151.56.35:8000/form/" + uuid);
+  const formRes = await axios.get("http://54.151.56.35:8000/form/" + uuid);
   const form = formRes.data.form;
-  const optionsRes = await fetch (
+  const optionsRes = await axios.get(
     "http://54.151.56.35:8000/form/options/" + uuid
   );
   const options = optionsRes.data.options;

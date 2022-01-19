@@ -1,4 +1,4 @@
-// import axios from "axios";
+import axios from "axios";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import styles from "./../../../styles/Home.module.css";
@@ -22,7 +22,7 @@ const Responses = () => {
 
   const [responses, setResponses] = useState([]);
   useEffect(async () => {
-    const res = await fetch ('http://54.151.56.35:8000/responses');
+    const res = await axios.get('http://54.151.56.35:8000/responses');
     setResponses(res.data.responses)
   }, [])
 

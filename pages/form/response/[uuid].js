@@ -1,9 +1,9 @@
 import styles from "./../../../styles/Home.module.css";
-// import axios from "axios";
+import axios from "axios";
 import { useRouter } from "next/router";
 
 export async function getStaticPaths() {
-  const res = await fetch("http://54.151.56.35:8000/responses");
+  const res = await axios.get("http://54.151.56.35:8000/responses");
   const responses = res.data.responses;
   const paths = responses.map((response) => {
     if (response.uuid === null) {
