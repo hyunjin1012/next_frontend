@@ -1,4 +1,4 @@
-import axios from "axios";
+// import axios from "axios";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import styles from "../../styles/Home.module.css";
@@ -6,7 +6,7 @@ import styles from "../../styles/Home.module.css";
 const Forms = () => {
   const [forms, setForms] = useState([]);
   useEffect(async () => {
-    const res = await axios.get("http://54.151.56.35:8000/forms");
+    const res = await fetch ("http://54.151.56.35:8000/forms");
     setForms(res.data.forms);
   }, []);
 
