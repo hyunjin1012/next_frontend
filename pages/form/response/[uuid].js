@@ -1,4 +1,4 @@
-import styles from "./../../../styles/Home.module.css"
+import styles from "./../../../styles/Home.module.css";
 import axios from "axios";
 import { useRouter } from "next/router";
 
@@ -16,8 +16,6 @@ export async function getStaticPaths() {
   };
 }
 
-
-
 export const getStaticProps = async (context) => {
   const uuid = context.params.uuid;
   // console.log(uuid)
@@ -29,42 +27,35 @@ export const getStaticProps = async (context) => {
   // const questions = questionsRes.data.questions;
   // console.log(questions)
 
-  const res = await axios.get("http://54.151.56.35:8000/responses")
+  const res = await axios.get("http://54.151.56.35:8000/responses");
   const responses = res.data.responses;
-  const response = responses.filter((response) => response.uuid === uuid)[0]
-  const formUuid = response.formUuid
-  console.log(formUuid)
+  const response = responses.filter((response) => response.uuid === uuid)[0];
+  const formUuid = response.formUuid;
   // const answersRes = await axios.get("http://54.151.56.35:8000/answers/" + uuid)
   // const answers = answersRes.data.answers;
   // console.log(answers)
   // const questions = questionsRes.data.questions;
   // console.log(questions)
   return {
-    props: { response: response}
-  }
-}
+    props: { response: response },
+  };
+};
 
-  export default function Response(props) {
-
-    const router = useRouter()
-
-  // If the page is not yet generated, this will be displayed
-  // initially until getStaticProps() finishes running
-  if (router.isFallback) {
-    return <div>Loading...</div>
-  }
-
-    const uuid = props.response.uuid
+export default function Response(props) {
+  const router = useRouter();
+  const uuid = props.response.uuid;
 
   // const router = useRouter();
   // const {uuid} = router.query
-  return (
-    <div className={styles.container}>
-      <div>Response ID: {uuid}</div>
-      {/* <ResponseForm response={response} questions = {questions} /> */}
-    </div>
-  )
-
+  if (router.isFallback) {
+    return <div>Loading...</div>;
+  } else
+    return (
+      <div className={styles.container}>
+        <div>Response ID: {uuid}</div>
+        {/* <ResponseForm response={response} questions = {questions} /> */}
+      </div>
+    );
 }
 
 // function ResponseForm({ response, questions }) {

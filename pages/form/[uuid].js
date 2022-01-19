@@ -12,7 +12,6 @@ export async function getStaticPaths() {
       return;
     } else return { params: { uuid: form.uuid.toString() } };
   });
-  console.log(paths)
   return {
     paths: paths,
     fallback: false,
@@ -33,23 +32,13 @@ export async function getStaticProps(context) {
 }
 
 export default function Form(props) {
-
-  const router = useRouter()
-
-  // If the page is not yet generated, this will be displayed
-  // initially until getStaticProps() finishes running
-  if (router.isFallback) {
-    return <div>Loading...</div>
-  }
-
+  const [options, setOptions] = useState(props.options);
+  const router = useRouter();
   const responseUuid = uuidv4();
   const formTitle = props.form.formTitle;
   const formDesc = props.form.formDesc;
   const formUuid = props.form.uuid;
   const questions = props.form.Questions;
-
-  const [options, setOptions] = useState(props.options);
-
 
   const submit = async () => {
     await axios.post("http://54.151.56.35:8000/createresponse", {
@@ -62,7 +51,6 @@ export default function Form(props) {
       return;
     } else
       options.map(async (option, index) => {
-        
         await axios.post("http://54.151.56.35:8000/createanswer", {
           uuid: uuidv4(),
           qUuid: option.qUuid,
@@ -75,60 +63,60 @@ export default function Form(props) {
           formUuid: formUuid,
         });
       });
-    alert(`Thank you for submitting your response:${responseUuid}`)
-    router.push({pathname: `/form/response`})
+    alert(`Thank you for submitting your response:${responseUuid}`);
+    router.push({ pathname: `/form/response` });
   };
 
-  return (
-    <div className={styles.container}>
-      <div>Form ID: {props.form.uuid}</div>
-      <div className={styles.formContainer}>
-      <div className={styles.box}>
-        <h1 className={styles.input} style={{ fontSize: "30px" }}>
-          {formTitle}
-        </h1>
-        <div className={styles.input} style={{ fontSize: "15px" }}>
-          {formDesc}
-        </div>
-        <div style={{ width: "100%" }}>
-          {questions.length !== 0 ? (
-            questions.map((question, index) => {
-              return (
-                <div key={index}>
-                  <div className={styles.question}>{question.title}</div>
-                  <div className={styles.question}>{question.desc}</div>
-                  <div>
-                    <OptionBox
-                      key={index}
-                      question={question}
-                      options={options}
-                      setOptions={setOptions}
-                    />
-                  </div>
-                </div>
-              );
-            })
-          ) : (
-            <></>
-          )}
+  if (router.isFallback) {
+    return <div>Loading...</div>;
+  } else
+    return (
+      <div className={styles.container}>
+        <div>Form ID: {props.form.uuid}</div>
+        <div className={styles.formContainer}>
+          <div className={styles.box}>
+            <h1 className={styles.input} style={{ fontSize: "30px" }}>
+              {formTitle}
+            </h1>
+            <div className={styles.input} style={{ fontSize: "15px" }}>
+              {formDesc}
+            </div>
+            <div style={{ width: "100%" }}>
+              {questions.length !== 0 ? (
+                questions.map((question, index) => {
+                  return (
+                    <div key={index}>
+                      <div className={styles.question}>{question.title}</div>
+                      <div className={styles.question}>{question.desc}</div>
+                      <div>
+                        <OptionBox
+                          key={index}
+                          question={question}
+                          options={options}
+                          setOptions={setOptions}
+                        />
+                      </div>
+                    </div>
+                  );
+                })
+              ) : (
+                <></>
+              )}
+            </div>
+          </div>
+          <button className={styles.btn} onClick={(e) => submit()}>
+            Submit
+          </button>
         </div>
       </div>
-      <button className={styles.btn} onClick={(e) => submit()}>
-        Submit
-      </button>
-    </div>
-    </div>
-  );
+    );
 }
 
-
 function OptionBox({ question, options, setOptions }) {
-  
   const qUuid = question.uuid;
   const qQType = question.qType;
   const allOptions = [...options];
   const qOptions = options.filter((option) => option.qUuid === question.uuid);
-  // setOptions(qOptions);
 
   const updateCheckboxRadio = (checked, uuid) => {
     const foundIndex = allOptions.findIndex((option) => option.uuid === uuid);
