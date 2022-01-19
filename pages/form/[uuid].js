@@ -51,8 +51,6 @@ export default function Form(props) {
   const [options, setOptions] = useState(props.options);
 
 
-  const router = useRouter();
-
   const submit = async () => {
     await axios.post("http://54.151.56.35:8000/createresponse", {
       uuid: responseUuid,
