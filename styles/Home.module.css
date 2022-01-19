@@ -1,116 +1,194 @@
 .container {
-  padding: 0 2rem;
-}
-
-.main {
-  min-height: 100vh;
-  padding: 4rem 0;
-  flex: 1;
+  padding: 1rem;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  background-color: #eee;
+  min-height: 100vh;
+  width: 100%
 }
 
-.footer {
-  display: flex;
-  flex: 1;
-  padding: 2rem 0;
-  border-top: 1px solid #eaeaea;
-  justify-content: center;
-  align-items: center;
+.formContainer {
+  max-width: 750px;
+  top: 0;
 }
 
-.footer a {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-grow: 1;
-}
-
-.title a {
-  color: #0070f3;
-  text-decoration: none;
-}
-
-.title a:hover,
-.title a:focus,
-.title a:active {
-  text-decoration: underline;
-}
-
-.title {
-  margin: 0;
-  line-height: 1.15;
-  font-size: 4rem;
-}
-
-.title,
-.description {
-  text-align: center;
-}
-
-.description {
-  margin: 4rem 0;
-  line-height: 1.5;
-  font-size: 1.5rem;
-}
-
-.code {
-  background: #fafafa;
-  border-radius: 5px;
-  padding: 0.75rem;
-  font-size: 1.1rem;
-  font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
-    Bitstream Vera Sans Mono, Courier New, monospace;
-}
-
-.grid {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  max-width: 800px;
-}
-
-.card {
-  margin: 1rem;
-  padding: 1.5rem;
-  text-align: left;
-  color: inherit;
-  text-decoration: none;
-  border: 1px solid #eaeaea;
+.box {
+  background-color: white;
+  margin: 1rem 0;
+  padding: 2rem;
   border-radius: 10px;
-  transition: color 0.15s ease, border-color 0.15s ease;
-  max-width: 300px;
+  border:transparent;
+  min-width: 600px;
 }
 
-.card:hover,
-.card:focus,
-.card:active {
-  color: #0070f3;
-  border-color: #0070f3;
+.box:focus-within {
+  border-left: 15px solid gray;
 }
 
-.card h2 {
-  margin: 0 0 1rem 0;
-  font-size: 1.5rem;
+.li {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
 }
 
-.card p {
-  margin: 0;
-  font-size: 1.25rem;
-  line-height: 1.5;
+.input {
+  transition: all 0.3s ease-in;
+  width: 100%;
+  padding: 6px 10px;
+  margin: 5px 5px;
+  border: transparent;
+  border-bottom: 2px solid #eee;
+  
 }
 
-.logo {
-  height: 1em;
-  margin-left: 0.5rem;
+.input:focus {
+  outline: none;
+  border-bottom-color: #665856
 }
 
-@media (max-width: 600px) {
-  .grid {
-    width: 100%;
-    flex-direction: column;
-  }
+.responseInput {
+  padding: 6px 10px;
+  margin: 5px 5px;
+}
+
+.responseInput:checked + label {
+  background-color: lightgray;
+  padding: 0 3px;
+  border-radius: 5px;
+}
+
+.select {
+  border: none;
+  border-radius: 4px;
+  background-color: #f1f1f1;
+  margin: 5px 1px;
+}
+
+.trashBtn{
+  margin-top: 10px;
+  padding: 3px 10px;
+  border:none;
+  color: white;
+  background-color: darkgray;
+  cursor: pointer;
+  text-decoration: none;
+  margin: 5px 1px;
+  border-radius: 5px;
+}
+
+.trashBtn:hover {
+  background-color: gray;
+}
+
+.moveBtn {
+  padding: 0 10px;
+  border: none;
+  color: darkgray;
+  cursor: pointer;
+  text-decoration: none;
+  margin: 0 1px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  ;
+}
+
+.deleteBtn {
+  padding: 5px 10px;
+  border:none;
+  color: white;
+  background-color: darkred;
+  cursor: pointer;
+  text-decoration: none;
+  margin: 5px 1px;
+  border-radius: 5px;
+}
+.deleteBtn:hover {
+  background-color: red;
+}
+
+.addBtn {
+  padding: 5px 10px;
+  border:none;
+  color: white;
+  background-color: darkgreen;
+  cursor: pointer;
+  text-decoration: none;
+  margin: 5px 1px;
+  border-radius: 5px;
+}
+.addBtn:hover {
+  background-color: green;
+}
+
+.addQuestionBtn {
+  background-color: darkgray;
+  text-decoration: none;
+  border: none;
+  color: white;
+  width:150px;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.addQuestionBtn:hover {
+  background-color: gray;
+}
+
+.btn {
+  width:200px;
+  border: none;
+  color: white;
+  padding: 13px 25px;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
+  background-color: darkblue;
+  border-radius: 5px;
+}
+
+.btn:hover {
+  background-color: blue;
+}
+
+
+.formTitle {
+  font-size: x-large;
+}
+
+.formDesc {
+  font-size: medium;
+}
+
+.question {
+  padding: 3px;
+  font-size: large;
+}
+
+.questionDesc {
+  padding: 5px;
+  margin-bottom: 3px;
+  font-size: small
+}
+
+.option {
+  font-size: medium;
+  margin: 0 5px
+}
+
+.optionDesc{
+  font-size: small
+}
+
+.optionBox {
+  padding:7px;
+  margin-right: 5px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
