@@ -72,11 +72,6 @@ export default function Form(props) {
     return <div>Loading...</div>;
   } else
     return (
-      <>
-      {/* <Head>
-      <title>Form Title: {props.form.formTitle}</title>
-      <meta httpEquiv="Content-Security-Policy" content="upgrade-insecure-requests"></meta>
-      </Head> */}
       <div className={styles.container}>
         <div>Form ID: {props.form.uuid}</div>
         <div className={styles.formContainer}>
@@ -91,9 +86,9 @@ export default function Form(props) {
               {questions.length !== 0 ? (
                 questions.map((question, index) => {
                   return (
-                    <div key={index}>
+                    <div key={index} className={styles.box}>
                       <div className={styles.question}>{question.title}</div>
-                      <div className={styles.question}>{question.desc}</div>
+                      <div className={styles.question} style={{marginBottom: "15px"}}>{question.desc}</div>
                       <div>
                         <OptionBox
                           key={index}
@@ -115,7 +110,6 @@ export default function Form(props) {
           </button>
         </div>
       </div>
-      </>
     );
 }
 
@@ -144,7 +138,7 @@ function OptionBox({ question, options, setOptions }) {
   };
 
   return (
-    <div>
+    <div >
       {(qQType === "checkbox" || qQType === "radio") && qOptions.length !== 0
         ? qOptions.map((option, index) => {
             return (
