@@ -23,13 +23,13 @@ export default function Create() {
 
   const submit = async () => {
 
-    await axios.post("http://create.hyunjin.xyz/createform", {
+    await axios.post("https://hyunjin.xyz/createform", {
       uuid,
       formTitle,
       formDesc,
     });
 
-    await axios.post("http://create.hyunjin.xyz/createquestions", {
+    await axios.post("https://hyunjin.xyz/createquestions", {
       formUuid: uuid,
       questions,
     });
@@ -43,7 +43,7 @@ export default function Create() {
       if (options.length === 0) {return;}
       const qUuid = options[0].qUuid;
       const formUuid = uuid
-      await axios.post(("http://create.hyunjin.xyz/createoptions"), {qUuid: qUuid, formUuid: formUuid, options})
+      await axios.post(("https://hyunjin.xyz/createoptions"), {qUuid: qUuid, formUuid: formUuid, options})
     });
 
     alert(

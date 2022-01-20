@@ -7,7 +7,7 @@ import styles from "../../styles/Home.module.css";
 const Forms = () => {
   const [forms, setForms] = useState([]);
   useEffect(async () => {
-    const res = await axios.get("http://create.hyunjin.xyz/forms");
+    const res = await axios.get("https://hyunjin.xyz/forms");
     setForms(res.data.forms);
   }, []);
 

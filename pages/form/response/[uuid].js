@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import Head from "next/head";
 
 export async function getStaticPaths() {
-  const res = await axios.get("http://create.hyunjin.xyz/responses");
+  const res = await axios.get("https://hyunjin.xyz/responses");
   const responses = res.data.responses;
   const paths = responses.map((response) => {
     if (response.uuid === null) {
@@ -28,7 +28,7 @@ export const getStaticProps = async (context) => {
   // const questions = questionsRes.data.questions;
   // console.log(questions)
 
-  const res = await axios.get("http://create.hyunjin.xyz/responses");
+  const res = await axios.get("https://hyunjin.xyz/responses");
   const responses = res.data.responses;
   const response = responses.filter((response) => response.uuid === uuid)[0];
   const formUuid = response.formUuid;
