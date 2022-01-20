@@ -6,7 +6,7 @@ import { useRouter } from "next/router";
 import Head from "next/head";
 
 export async function getStaticPaths() {
-  const res = await axios.get("http://nodejs.hyunjin.xyz:8000/forms");
+  const res = await axios.get("http://create.hyunjin.xyz/forms");
   const forms = res.data.forms;
   const paths = forms.map((form) => {
     if (form.uuid === null) {
@@ -21,10 +21,10 @@ export async function getStaticPaths() {
 
 export async function getStaticProps(context) {
   const uuid = context.params.uuid;
-  const formRes = await axios.get("http://nodejs.hyunjin.xyz:8000/form/" + uuid);
+  const formRes = await axios.get("http://create.hyunjin.xyz/form/" + uuid);
   const form = formRes.data.form;
   const optionsRes = await axios.get(
-    "http://nodejs.hyunjin.xyz:8000/form/options/" + uuid
+    "http://create.hyunjin.xyz/form/options/" + uuid
   );
   const options = optionsRes.data.options;
   return {
@@ -42,7 +42,7 @@ export default function Form(props) {
   const questions = props.form.Questions;
 
   const submit = async () => {
-    await axios.post("http://nodejs.hyunjin.xyz:8000/createresponse", {
+    await axios.post("http://create.hyunjin.xyz/createresponse", {
       uuid: responseUuid,
       formTitle,
       formDesc,
@@ -52,7 +52,7 @@ export default function Form(props) {
       return;
     } else
       options.map(async (option, index) => {
-        await axios.post("http://nodejs.hyunjin.xyz:8000/createanswer", {
+        await axios.post("http://create.hyunjin.xyz/createanswer", {
           uuid: uuidv4(),
           qUuid: option.qUuid,
           qTitle: option.qTitle,

@@ -23,7 +23,7 @@ const Responses = () => {
 
   const [responses, setResponses] = useState([]);
   useEffect(async () => {
-    const res = await axios.get('http://nodejs.hyunjin.xyz:8000/responses');
+    const res = await axios.get('http://create.hyunjin.xyz/responses');
     setResponses(res.data.responses)
   }, [])
 
