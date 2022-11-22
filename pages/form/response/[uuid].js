@@ -1,7 +1,6 @@
 import styles from "./../../../styles/Home.module.css";
 import axios from "axios";
 import { useRouter } from "next/router";
-import Head from "next/head";
 
 export async function getStaticPaths() {
   const res = await axios.get("https://hyunjin.xyz/responses");

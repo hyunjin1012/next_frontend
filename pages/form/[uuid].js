@@ -3,7 +3,6 @@ import { useState } from "react";
 import styles from "../../styles/Home.module.css";
 import { v4 as uuidv4 } from "uuid";
 import { useRouter } from "next/router";
-import Head from "next/head";
 
 export async function getStaticPaths() {
   const res = await axios.get("https://hyunjin.xyz/forms");

@@ -148,6 +148,7 @@ export default function Create() {
 
     <div className={styles.container}>
       <div className={styles.formContainer}>
+        <div className={styles.formContainer}>
         <div className={styles.box}>
           <input
             className={styles.input}
@@ -239,6 +240,7 @@ export default function Create() {
           </button>
         </div>
       </div>
+    </div>
     </div>
   );
 }
